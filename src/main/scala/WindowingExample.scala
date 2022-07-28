@@ -50,10 +50,12 @@ object WindowingExample {
     val w = Window
       .partitionBy("year", "quarter")
       .rowsBetween(Window.unboundedPreceding, Window.currentRow)
-    salesDSWithQuarter
-      .withColumn("Cumulative Sum", sum("amount") over w)
-      .sort("year", "month")
-      .show()
+    TimeIt.executionTime {
+      salesDSWithQuarter
+        .withColumn("Cumulative Sum", sum("amount") over w)
+        .sort("year", "month")
+        .show()
+    }
 
   }
 }
