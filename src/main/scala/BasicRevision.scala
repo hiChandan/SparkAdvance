@@ -66,6 +66,7 @@ object BasicRevision {
     ds2.show()
     val ds3 = spark.sparkContext.parallelize(data2).toDF().as[Languages]
     ds3.show()
+//    ds3.filter(f => f.language == "Scala")  DataSet Advantage
 
 //7
     println("Create DataFrame")
